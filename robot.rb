@@ -11,8 +11,6 @@ end
 
 class Robot
 
-  attr_accessor :x, :y, :direction
-
   DIRECTION = %w[NORTH EAST SOUTH WEST]
 
 	def initialize(x = 0, y = 0)
@@ -26,12 +24,12 @@ class Robot
 	def place(x, y, direction)
     @area = Platform.new(5, 6)
 		if 0 <= y && y <= @area.width
-      @y = y
+      @y = y.to_i
     else
       puts 'Y coordinate is unavailable'
     end
     if 0 <= x && x <= @area.height
-      @x = x
+      @x = x.to_i
     else
       puts 'X coordinate is unavailable'
     end
@@ -101,7 +99,7 @@ class Robot
     case command[0].downcase
       when 'place'
         args = command[1].split(',')
-        place args[0].to_i, args[1].to_i, args[2]
+        place args[0].to_i, args[1].to_i, args[2].upcase
       when 'move'
         move
       when 'left'
@@ -121,3 +119,8 @@ loop do
   break if data.eql? 'exit'
   robot.actions data
 end
+
+#robot = Robot.new
+#%{PLACE 0,0,NORTH;MOVE;REPORT;PLACE 0,0,NORTH;LEFT;REPORT;PLACE 1,2,EAST;MOVE;MOVE;LEFT;MOVE;REPORT;}.split(';').each do |command|
+#  robot.actions command
+#end
