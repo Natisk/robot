@@ -25,12 +25,12 @@ class Robot
 
 	def place(x, y, direction)
     @area = Platform.new(5, 6)
-		if 0 < y && y <= @area.width
+		if 0 <= y && y <= @area.width
       @y = y
     else
       puts 'Y coordinate is unavailable'
     end
-    if 0 < x && x <= @area.height
+    if 0 <= x && x <= @area.height
       @x = x
     else
       puts 'X coordinate is unavailable'
@@ -42,7 +42,7 @@ class Robot
 		
 	def move
     if @alive
-      case DIRECTION[@side]
+      case DIRECTION[@side].downcase
         when 'north'
           if @y < @area.height
             @y += 1
@@ -101,17 +101,16 @@ class Robot
     case command[0].downcase
       when 'place'
         args = command[1].split(',')
-        self.place args[0].to_i, args[1].to_i, args[2]
+        place args[0].to_i, args[1].to_i, args[2]
       when 'move'
-        self.move
+        move
       when 'left'
-        self.left
+        left
       when 'right'
-        self.right
+        right
       when 'report'
-        self.report
+        report
     end
-    puts 'actions !!!!!!!!!!!'
   end
 
 end
