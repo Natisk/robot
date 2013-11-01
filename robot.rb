@@ -15,8 +15,7 @@ class Robot
 
   DIRECTION = %w[north east south west]
 
-	def initialize(x = 0, y = 0, direction = 'north')
-    @d = DIRECTION.index(direction)
+	def initialize(x = 0, y = 0)
 		@y = y
 		@x = x
     @side = 0
@@ -26,18 +25,18 @@ class Robot
 
 	def place(x, y, direction)
     @area = Platform.new(5, 6)
-		if y < @area.width.to_s
+		if y <= @area.width
       @y = y
     else
       puts 'Y is too big'
     end
-    if x <= @area.height.to_s
+    if x <= @area.height
       @x = x
     else
       puts 'X is too big'
     end
 
-    @d = DIRECTION.index(direction)
+    @side = DIRECTION.index(direction)
 
     @alive = true
     puts 'placed!!!!!!!!'
@@ -64,14 +63,12 @@ class Robot
           end
       end
     end
-    puts @area.height
-    puts @area.width
     puts 'move!!!!!!!!'
   end
 
   def right
     if @alive
-      if @side == DIRECTION.length
+      if @side == DIRECTION.length-1
         @side = 0
       else
         @side += 1
@@ -83,7 +80,7 @@ class Robot
   def left
     if @alive
       if @side == 0
-        @side = DIRECTION[-1]
+        @side = DIRECTION.length-1
       else
         @side -= 1
       end
@@ -102,7 +99,7 @@ class Robot
     case command[0]
       when 'place'
         args = command[1].split(',')
-        self.place args[0], args[1], args[2]
+        self.place args[0].to_i, args[1].to_i, args[2]
       when 'move'
         self.move
       when 'left'
@@ -122,6 +119,6 @@ puts 'Hello World'
 loop do
   data = gets
   robot.actions data
-  break if gets.eql?('exit')
+  break if data.downcase.eql?('exit')
 end
 
