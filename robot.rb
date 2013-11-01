@@ -42,21 +42,13 @@ class Robot
     if @alive
       case DIRECTION[@side].downcase
         when 'north'
-          if @y < @area.height
-            @y += 1
-          end
+          @y += 1 if @y < @area.height
         when 'east'
-          if @x < @area.width
-            @x += 1
-          end
+          @x += 1 if @x < @area.width
         when 'south'
-          if @y > 0
-            @y -= 1
-          end
+          @y -= 1 if @y > 0
         when 'west'
-          if @x > 0
-            @x -= 1
-          end
+          @x -= 1 if @x > 0
       end
       puts '-- done'
     else
@@ -106,13 +98,13 @@ class Robot
 end
 
 robot = Robot.new
+
 loop do
   data = gets.chomp
   break if data.eql? 'exit'
   robot.actions data
 end
 
-#robot = Robot.new
 #%{PLACE 0,0,NORTH;MOVE;REPORT;PLACE 0,0,NORTH;LEFT;REPORT;PLACE 1,2,EAST;MOVE;MOVE;LEFT;MOVE;REPORT;}.split(';').each do |command|
 #  robot.actions command
 #end
