@@ -121,4 +121,3 @@ loop do
   robot.actions data
   break if data.downcase.eql?('exit')
 end
-
