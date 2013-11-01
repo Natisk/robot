@@ -13,17 +13,17 @@ class Robot
 
   DIRECTION = %w[NORTH EAST SOUTH WEST]
 
-	def initialize(x = 0, y = 0)
-		@y = y
-		@x = x
+  def initialize(x = 0, y = 0)
+    @y = y
+    @x = x
     @side = 0
     @alive = false
     puts 'Robot is complete'
-	end
+  end
 
-	def place(x, y, direction)
-    @area = Platform.new(5, 6)
-		if 0 <= y && y <= @area.width
+  def place(x, y, direction)
+    @area = Platform.new
+    if 0 <= y && y <= @area.width
       @y = y.to_i
     else
       puts 'Y coordinate is unavailable'
@@ -36,9 +36,9 @@ class Robot
     @side = DIRECTION.index(direction) if DIRECTION.include?(direction)
     @alive = true
     puts '-- done'
-	end
+  end
 
-	def move
+  def move
     if @alive
       case DIRECTION[@side].downcase
         when 'north'
@@ -66,11 +66,7 @@ class Robot
 
   def right
     if @alive
-      if @side == DIRECTION.length-1
-        @side = 0
-      else
-        @side += 1
-      end
+      @side = @side == DIRECTION.length-1 ? 0 : @side += 1
       puts '-- done'
     else
       puts 'PLACE robot first'
@@ -79,11 +75,7 @@ class Robot
 
   def left
     if @alive
-      if @side == 0
-        @side = DIRECTION.length-1
-      else
-        @side -= 1
-      end
+      @side = @side == 0 ? DIRECTION.length-1 : @side -= 1
       puts '-- done'
     else
       puts 'PLACE robot first'
