@@ -25,19 +25,17 @@ class Robot
 
 	def place(x, y, direction)
     @area = Platform.new(5, 6)
-		if y <= @area.width
+		if 0 < y && y <= @area.width
       @y = y
     else
-      puts 'Y is too big'
+      puts 'Y coordinate is unavailable'
     end
-    if x <= @area.height
+    if 0 < x && x <= @area.height
       @x = x
     else
-      puts 'X is too big'
+      puts 'X coordinate is unavailable'
     end
-
-    @side = DIRECTION.index(direction)
-
+    @side = DIRECTION.index(direction) if DIRECTION.include?(direction)
     @alive = true
     puts 'placed!!!!!!!!'
 	end
