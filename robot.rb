@@ -18,7 +18,7 @@ class Robot
     @x = x
     @side = 0
     @alive = false
-    puts 'Robot is complete'
+    puts 'Robot is complete. Available commands: PLACE x,y,DIRECTION; LEFT; RIGHT; MOVE; REPORT'
   end
 
   def place(x, y, direction)
