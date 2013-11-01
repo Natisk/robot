@@ -39,7 +39,7 @@ class Robot
     @alive = true
     puts '-- done'
 	end
-		
+
 	def move
     if @alive
       case DIRECTION[@side].downcase
@@ -117,7 +117,7 @@ end
 
 robot = Robot.new
 loop do
-  data = gets
-  break if data == 'exit'
+  data = gets.chomp
+  break if data.eql? 'exit'
   robot.actions data
 end
