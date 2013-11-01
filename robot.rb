@@ -13,14 +13,14 @@ class Robot
 
   attr_accessor :x, :y, :direction
 
-  DIRECTION = %w[north east south west]
+  DIRECTION = %w[NORTH EAST SOUTH WEST]
 
 	def initialize(x = 0, y = 0)
 		@y = y
 		@x = x
     @side = 0
     @alive = false
-    puts 'initialized!!!!!'
+    puts 'Robot is complete'
 	end
 
 	def place(x, y, direction)
@@ -37,7 +37,7 @@ class Robot
     end
     @side = DIRECTION.index(direction) if DIRECTION.include?(direction)
     @alive = true
-    puts 'placed!!!!!!!!'
+    puts '-- done'
 	end
 		
 	def move
@@ -60,8 +60,10 @@ class Robot
             @x -= 1
           end
       end
+      puts '-- done'
+    else
+      puts 'PLACE robot first'
     end
-    puts 'move!!!!!!!!'
   end
 
   def right
@@ -71,8 +73,10 @@ class Robot
       else
         @side += 1
       end
+      puts '-- done'
+    else
+      puts 'PLACE robot first'
     end
-    puts 'right'
   end
 
   def left
@@ -82,19 +86,19 @@ class Robot
       else
         @side -= 1
       end
+      puts '-- done'
+    else
+      puts 'PLACE robot first'
     end
-    puts 'hello'
-    puts 'left'
   end
 
   def report
-    puts "#{@x}, #{@y}, #{DIRECTION[@side]}"
-    puts 'report!!!!!!'
+    puts "-> #{@x}, #{@y}, #{DIRECTION[@side]}"
   end
 
   def actions(from_keyboard)
     command = from_keyboard.split(' ')
-    case command[0]
+    case command[0].downcase
       when 'place'
         args = command[1].split(',')
         self.place args[0].to_i, args[1].to_i, args[2]
@@ -113,9 +117,8 @@ class Robot
 end
 
 robot = Robot.new
-puts 'Hello World'
 loop do
   data = gets
+  break if data == 'exit'
   robot.actions data
-  break if data.downcase.eql?('exit')
 end
