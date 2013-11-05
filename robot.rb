@@ -14,8 +14,8 @@ class Robot
   DIRECTION = %w[NORTH EAST SOUTH WEST]
 
   def initialize(x = 0, y = 0)
-    @y = y
-    @x = x
+    @y_coord = y
+    @x_coord = x
     @side = 0
     @alive = false
     puts 'Robot is complete. Available commands: PLACE x,y,DIRECTION; LEFT; RIGHT; MOVE; REPORT'
@@ -24,12 +24,12 @@ class Robot
   def place(x, y, direction)
     @area = Platform.new
     if 0 <= y && y <= @area.width
-      @y = y.to_i
+      @y_coord = y.to_i
     else
       puts 'Y coordinate is unavailable'
     end
     if 0 <= x && x <= @area.height
-      @x = x.to_i
+      @x_coord = x.to_i
     else
       puts 'X coordinate is unavailable'
     end
@@ -42,13 +42,15 @@ class Robot
     if @alive
       case DIRECTION[@side].downcase
         when 'north'
-          @y += 1 if @y < @area.height
+          @y_coord += 1 if @y_coord < @area.height
         when 'east'
-          @x += 1 if @x < @area.width
+          @x_coord += 1 if @x_coord < @area.width
         when 'south'
-          @y -= 1 if @y > 0
+          @y_coord -= 1 if @y_coord > 0
         when 'west'
-          @x -= 1 if @x > 0
+          @x_coord -= 1 if @x_coord > 0
+        else
+          puts 'unknown direction'
       end
       puts '-- done'
     else
@@ -75,7 +77,7 @@ class Robot
   end
 
   def report
-    puts "-> #{@x}, #{@y}, #{DIRECTION[@side]}"
+    puts "-> #{@x_coord}, #{@y_coord}, #{DIRECTION[@side]}"
   end
 
   def actions(from_keyboard)
@@ -92,6 +94,8 @@ class Robot
         right
       when 'report'
         report
+      else
+        puts 'unknown command'
     end
   end
 
