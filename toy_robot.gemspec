@@ -3,7 +3,7 @@
 Gem::Specification.new do |spec|
   spec.name          = "toy_robot"
   spec.version       = ToyRobot::VERSION
-  spec.authors       = ["Real Natisk"]
+  spec.authors       = ["Vitalii Matseiko"]
   spec.email         = ["realnatisk@gmail.com"]
 
   spec.summary       = "A console Toy Robot simulator game"
