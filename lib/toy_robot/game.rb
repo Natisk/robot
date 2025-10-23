@@ -23,6 +23,8 @@ module ToyRobot
       end
 
       puts "\n👋 Game over!"
+    rescue Interrupt
+      puts "\n👋 Game interrupted. Goodbye!"
     end
 
     private
