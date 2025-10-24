@@ -1,0 +1,19 @@
+# Ruby gem essentials
+*.gem
+/pkg/
+/vendor/
+/.bundle/
+
+# Logs & temp
+/log/
+/tmp/
+/coverage/
+!.keep
+
+# Editors & OS
+.vscode/
+.idea/
+.DS_Store
+
+# Environment
+.env*
