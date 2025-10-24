@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "toy_robot"
+require_relative '../lib/toy_robot'
 
 RSpec.configure do |config|
   config.color = true
