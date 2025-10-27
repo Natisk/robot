@@ -5,4 +5,4 @@ source "https://rubygems.org"
 gemspec
 
 gem "rspec", "~> 3.12"
-gem "rubocop", required: false
+gem "rubocop", require: false
