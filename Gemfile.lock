@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    toy_robot (0.1.0)
+    toy_robot_traveler (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -58,7 +58,7 @@ PLATFORMS
 DEPENDENCIES
   rspec (~> 3.12)
   rubocop
-  toy_robot!
+  toy_robot_traveler!
 
 BUNDLED WITH
    2.5.16
