@@ -18,6 +18,6 @@ Gem::Specification.new do |spec|
   spec.executables   = ['toy_robot']
   spec.require_paths = ['lib']
 
-  spec.homepage = 'https://github.com/Natisk/robot'
-  spec.metadata['homepage_uri'] = 'https://github.com/Natisk/robot'
+  spec.homepage = 'https://github.com/Natisk/toy_robot_traveler'
+  spec.metadata['homepage_uri'] = 'https://github.com/Natisk/toy_robot_traveler'
 end
