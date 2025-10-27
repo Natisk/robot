@@ -5,4 +5,4 @@ A fun Ruby console game — control your robot on a 5×5 grid with simple comman
 ## Installation
 
 ```bash
-gem install toy_robot
+gem install toy_robot_traveler
