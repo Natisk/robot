@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe ToyRobot::Platform do
   subject(:platform) { described_class.new(width: 5, height: 5) }
 
-  describe 'valid_position?' do
+  describe '#valid_position?' do
     it 'returns true for positions within the bounds' do
       expect(platform.valid_position?(0, 0)).to be true
       expect(platform.valid_position?(5, 5)).to be true
